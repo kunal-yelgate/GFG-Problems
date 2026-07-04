@@ -3,18 +3,19 @@ class Solution {
     int maxSubarraySum(vector<int>& arr, int k) {
         // code here
         int n = arr.size();
-        long long  windowSum = 0;
-        long long  maxSum = INT_MIN;
-
+        
+        int WindowSum = 0 ,maxSum;
         for(int i = 0 ; i < k ; i++) {
-            windowSum += arr[i];
+            WindowSum += arr[i];
         }
-        maxSum = windowSum ;
-        for(int i = k ; i  < n ; i++) {
-            windowSum += arr[i];
-            windowSum -= arr[i - k];
-            maxSum = max(maxSum, windowSum);
+        
+        maxSum = WindowSum;
+        
+        for(int i = k ; i < n ; i++) {
+            WindowSum += arr[i] - arr[i - k];
+            maxSum = max(maxSum,WindowSum);
         }
         return maxSum;
+        
     }
 };
