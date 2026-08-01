@@ -1,7 +1,6 @@
 class Solution {
   public:
     int peakElement(vector<int> &arr) {
-        // code here
         int low  = 0;
         int high = arr.size() - 1;
         
